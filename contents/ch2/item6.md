@@ -5,6 +5,7 @@
 Q. 어떤 것이 더 성능이 좋을까?  
 ```java
 String BIKINI = new String("bikini"); // 1
+
 String BIKINI = "bikini"; // 2
 ```
 A. 2번
@@ -13,6 +14,7 @@ A. 2번
 - [reference](https://docs.oracle.com/javase/specs/jls/se11/html/jls-3.html#jls-3.10.5)
 
 <br>
+<hr>
 
 Q. 어떤 것이 더 성능이 좋을까?
 ```java
@@ -35,6 +37,7 @@ A. 2번
 - 2번 방식으로 했을 때, isRomanNumeral()이 호출되지 않으면 ROMAN이 의미없이 초기화되지만, 지연 초기화등을 쓰길 권하진 않는다. 코드만 복잡해지고 성능은 크게 개선되지 않을 때가 많기 때문이다.
 
 <br>
+<hr>
 
 Q. 어떤 문제가 있을까?
 ```java
@@ -49,6 +52,7 @@ private static long sum() {
 A. 박싱된 기본 타입보다는 기본 타입을 사용하고, 의도치 않은 오토박싱이 숨어들지 않도록 주의하자.
 
 <br>
+<hr>
 
 ### 요약
 - 똑같은 기능의 객체를 매번 생성하기 보다는 객체 하나를 재사용하는 편이 나을 때가 많다. 재사용은 빠르고 세련되다. 특히, 불변 객체는 언제든 재사용할 수 있다. - p31
