@@ -39,7 +39,7 @@
     - 먼저 super.clone을 호출한다. 그렇게 얻은 객체는 원본의 거의 완벽한 복제본일 것이다.
     - 공변 변환 타이핑(covariant return typing) 이용
         - 재정의한(Override) 메서드의 반환 타입은 상위 클래스의 메서드가 반환하는 타입의 하위 타입일 수 있다. 이 방식을 통해 재정의한 clone 메서드의 반환 타입을 바꾸어주고 클라이언트가 형변환하지 않아도 되게끔 해주자.
-
+        ```java
             @Override
             public PhoneNumber clone() {
                 try {
@@ -47,14 +47,14 @@
                 } catch (CloneNotSupportedException e) {
                     throw new AssertionError(); // 일어날 수 없는 일이다.
                 }
-            }
-
+            } 
+        ```
         - super.clone 호출을 try-catch 블록으로 감싼 이유는 Object의 clone 메서드가 검사 예외(checked exception)인 CloneNotSupportedException을 던지도록 선언되었기 때문이다.
     - PhoneNumber 클래스와 같은 클래스는 clone을 쉽게 구현할 수 있다.
 2. 배열을 인스턴스 변수로 갖는 예
     - 그런데 가변 객체를 참조하는 순간 clone의 구현은 재앙으로 돌변한다. clone 메서드가 단순히 super.clone 결과를 그대로 반환한다면, 기본 타입의 경우 복제가 제대로 되겠지만 배열과 같은 경우 원본 인스턴스와 같은 배열을 참조할 것이다. 이럴 경우 원본이나 복제본 중 하나를 수정하면 다른 하나도 수정되어 불변식을 해치게 된다. 따라서 프로그램이 이상하게 동작할 수 있다.
     - clone 메서드는 사실상 생성자와 같은 효과를 낸다. 즉, clone은 원본 객체에 아무런 해를 끼치지 않는 동시에 복제된 객체의 불변식을 보장해야 한다. 때문에 배열과 같은 정보를 복사할 때는 재귀적으로 clone을 호출해서 복사하는 것이다.
-
+    ```java
             @Override
             public Stack clone() {
                 try {
@@ -65,11 +65,11 @@
                     throw new AssertionError();
                 }
             }
-
+    ```
     - 그런데 위의 경우에서 elements가 final이었다면 어떻게 되었을까? 제대로 동작할 수 없다. 따라서 Cloneable 아키텍처는 '가변 객체를 참조하는 필드는 final로 선언하라'는 일반 용법과 충돌한다.
 3. clone을 재귀적으로 호출하는 것만으로도 충분하지 않은 경우
     - 복제본은 자신만의 버킷 배열을 갖지만, 이 배열은 원본과 같은 연결 리스트를 참조한다. 따라서 HashTable.Entry가 깊은 복사(deep copy)를 지원하도록 보강한 뒤 각각에 대해 deep copy를 해주어야 한다.
-
+    ```java
             @Override
             public HashTable clone() {
                 try {
@@ -83,7 +83,7 @@
                     throw new AssertionError();
                 }
             }
-
+    ```
     - 하지만 이 방법은 스택 오버플로를 일으킬 위험이 있기 때문에 이 문제를 피하려면 deepCopy를 재귀 호출 대신 반복자를 써서 순회하는 방향으로 수정해야 한다.
 4. 고수준 API를 이용하는 방법
     1. super.clone을 호출하여 얻은 객체의 모든 필드를 초기 상태로 설정한다.
