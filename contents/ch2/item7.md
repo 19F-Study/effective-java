@@ -31,4 +31,3 @@
   - 잦은 GC 발생
   - Stop the world
   - 결국엔 OutOfMemory?
-  - 로컬에서 full GC 발생 시키기
