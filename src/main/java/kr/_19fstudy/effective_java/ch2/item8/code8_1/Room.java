@@ -1,10 +1,10 @@
 package kr._19fstudy.effective_java.ch2.item8.code8_1;
 
-//import java.lang.ref.Cleaner;
+import java.lang.ref.Cleaner;
 
 public class Room implements AutoCloseable {
 
-//	private static final Cleaner cleaner = Cleaner.create();
+	private static final Cleaner cleaner = Cleaner.create();
 
 	private static class State implements Runnable {
 		int numJunkPiles;
@@ -22,15 +22,15 @@ public class Room implements AutoCloseable {
 
 	private final State state;
 
-//	private final Cleaner.Cleanable cleanable;
+	private final Cleaner.Cleanable cleanable;
 
 	public Room(int numJunkPiles) {
 		state = new State(numJunkPiles);
-//		cleanable = cleaner.register(this, state);
+		cleanable = cleaner.register(this, state);
 	}
 
 	@Override
 	public void close() throws Exception {
-//		cleanable.clean();
+		cleanable.clean();
 	}
 }
