@@ -1,13 +1,15 @@
-package kr._19fstudy.effective_java.ch2.item11;
+package chapter3.item11;
 
 import java.util.Objects;
 
 public class PhoneNumber {
+    private volatile int hashCode;
+
     private int areaCode;
     private int prefix;
     private int lineNum;
 
-    public PhoneNumber(int areaCode, int prefix, int lineNum) {
+    PhoneNumber(int areaCode, int prefix, int lineNum) {
         this.areaCode = areaCode;
         this.prefix = prefix;
         this.lineNum = lineNum;
@@ -23,13 +25,14 @@ public class PhoneNumber {
                 lineNum == that.lineNum;
     }
 
-    /*
+    // auto generate hashCode
     @Override
     public int hashCode() {
         return Objects.hash(areaCode, prefix, lineNum);
     }
-    */
 
+    /*
+    // 전형적인 hashCode
     @Override
     public int hashCode() {
         int result = Integer.hashCode(areaCode);
@@ -38,4 +41,21 @@ public class PhoneNumber {
 
         return result;
     }
+    */
+
+    /*
+    // hashCode lazy initialization
+    @Override
+    public int hashCode() {
+        int result = hashCode;
+
+        if (result == 0) {
+            result = 31 * result + Integer.hashCode(prefix);
+            result = 31 * result + Integer.hashCode(lineNum);
+            hashCode = result;
+        }
+
+        return result;
+    }
+    */
 }
