@@ -2,6 +2,8 @@
 
 > 여기서 말하는 **상속의 의미**는 클래스가 다른 클래스를 확장하는 구현 상속을 의미한다. 클래스가 인터페이스를 구현하거나 인터페이스가 다른 인터페이스를 확장하는 인터페이스 상속과는 무관하다.
 
+<br>
+
 ## 메서드 호출과 달리 상속은 캡슐화를 깨뜨린다.
 - 캡슐화를 지키기 위한 방법은 아래와 같다.[^1]
   - 클래스 멤버 변수의 접근제어자를 private으로 선언한다.
@@ -42,6 +44,8 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 }
 ```
 
+<br>
+
 ## 그렇다면 어떻게 해결할 수 있을까?
 1. addAll() 을 재정의하지 않기.
 	- HashSet의 addAll() 이 add() 를 이용해 구현했음을 가정한 해법이라는 한계를 갖는다.
@@ -54,6 +58,8 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
    - 반환 타입마저 같다면, 재정의한 꼴이 되니까 앞서의 문제와 똑같은 상황에 부딪힐 것이다.
 
 위에서 언급한 문제를 모두 피해가면서 이러한 문제를 해결해줄 방법이 바로 '컴포지션'이다.
+
+<br>
 
 ## 컴포지션(composition) 이란?
 - **기존 클래스를 확장하는 대신, 새로운 클래스를 만들고 private 필드로 기존 클래스의 인스턴스를 참조하게 하는 설계 방식.**
@@ -96,8 +102,12 @@ public class NewInstrumentedHashSet<E> {
 - 다른 Set 인스턴스를 감싸고(Wrap) 있다는 뜻에서 InstrumentedSet같은 클래스를 래퍼 클래스라 한다.
 - 다른 Set에 계측 기능을 덧씌운다는 뜻에서 데코레이터 패턴이라고 한다.
 
+<br>
+
 ## 그렇다면 래퍼 클래스는 항상 좋은 대안인가?
 - 콜백 프레임워크와는 어울리지 않는다.
+
+<br>
 
 ## 핵심 정리
 - 상속은 강력하지만, 캡슐화를 해친다는 문제가 있다.
@@ -106,5 +116,5 @@ public class NewInstrumentedHashSet<E> {
     - is-a 관계일 때도 하위 클래스의 패키지가 상위 클래스와 다르고, 상위 클래스가 확장을 고려해 설계되지 않았다면 여전히 문제가 될 수 있다.
 - 상속의 취약점을 피하려면 상속대신 컴포지션과 전달을 사용하자.
 
-<br><br>
+<br><br><br>
 [^1]: java encapsulation, https://www.tutorialspoint.com/java/java_encapsulation.htm
