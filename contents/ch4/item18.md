@@ -106,6 +106,7 @@ public class NewInstrumentedHashSet<E> {
 
 ## 그렇다면 래퍼 클래스는 항상 좋은 대안인가?
 - 콜백 프레임워크와는 어울리지 않는다.
+- https://stackoverflow.com/questions/28254116/wrapper-classes-are-not-suited-for-callback-frameworks
 
 <br>
 
