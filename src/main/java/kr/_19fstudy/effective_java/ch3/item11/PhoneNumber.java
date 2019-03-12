@@ -1,4 +1,4 @@
-package chapter3.item11;
+package kr._19fstudy.effective_java.ch3.item11;
 
 import java.util.Objects;
 
