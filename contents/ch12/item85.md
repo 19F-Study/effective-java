@@ -7,7 +7,7 @@
 - 프로그래머가 어렵지 않게 분산 객체를 만들 수 있다는 점은 매력적이었지만, 그 대가가 너무 컸다.  
   
   
-> 분산 객체 (Distributed Object) 란? [^3]  
+> 분산 객체 (Distributed Object) 란? [^1]  
 > - 분산 컴퓨팅 기술이 객체 지향과 접목되어 하나의 프로세서나 컴퓨터에서 실행되는 객체가 다른 프로세서나 컴퓨터에서 객체와 통신이 가능 하도록 하는 기술이 분산 객체 기술.  
 > - 자바에서는 대표적으로 RMI(Remote Method Invocation)가 있다.   
 
@@ -64,7 +64,5 @@ static byte[] bomb() {
 - 클래스가 직렬화를 지원하도록 만들지 말고, 꼭 그렇게 만들어야 한다면 정말 신경써서 작성해야 한다.
   
 <br><br><br><hr>  
-  
-[^1]: [Java serialization](https://www.baeldung.com/java-serialization)    
-[^2]: [자바 직렬화, 그것이 알고싶다. 훑어보기편](http://woowabros.github.io/experience/2017/10/17/java-serialize.html)    
-[^3]: [분산 객체](http://ojc.asia/bbs/board.php?bo_table=LecJavaNet&wr_id=12)
+      
+[^1]: [분산 객체](http://ojc.asia/bbs/board.php?bo_table=LecJavaNet&wr_id=12)
