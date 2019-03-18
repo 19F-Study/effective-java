@@ -8,7 +8,6 @@ public class Member implements Serializable {
     private String name;
     private String team;
     private int age;
-    //private String email;
 
     public Member(String name, String team, int age) {
         this.name = name;

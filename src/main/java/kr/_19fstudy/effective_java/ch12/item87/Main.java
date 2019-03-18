@@ -5,17 +5,13 @@ import java.io.*;
 public class Main {
     private static final String FILE_PATH = "/Users/summerb/Desktop/test/member.txt";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Member member = new Member("Summer", "Seller Settlements", 20);
+        serialize(member);
 
-        try {
-            serialize(member);
-            Object deSerializedMember = deSerialize();
-            System.out.println(deSerializedMember);
+        Object deSerializedMember = deSerialize();
+        System.out.println(deSerializedMember);
 
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     static void serialize(Member member) throws IOException {
