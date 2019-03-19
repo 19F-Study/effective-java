@@ -35,7 +35,6 @@ public class ProductTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void writeToFile(byte[] message) throws Exception {

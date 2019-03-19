@@ -4,6 +4,8 @@ package kr._19fstudy.effective_java.ch12.item86;
 import java.io.Serializable;
 
 public class Product implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private long id;
     private String name;
 
