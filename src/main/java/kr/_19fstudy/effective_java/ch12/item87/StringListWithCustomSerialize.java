@@ -1,7 +1,5 @@
 package kr._19fstudy.effective_java.ch12.item87;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
