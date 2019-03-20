@@ -1,0 +1,7 @@
+Compiled from "Outer.java"
+class kr._19fstudy.effective_java.ch4.item24.member.Outer$MemberInner {
+  private java.lang.String name;
+  final kr._19fstudy.effective_java.ch4.item24.member.Outer this$0;
+  kr._19fstudy.effective_java.ch4.item24.member.Outer$MemberInner(kr._19fstudy.effective_java.ch4.item24.member.Outer);
+  void doSayHi();
+}

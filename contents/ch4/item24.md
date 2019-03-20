@@ -3,6 +3,7 @@
 ## 참고 및 출처
 
 - Joshua Bloch. (2018). 이펙티브 자바 3판 (개앞매시(이복연) 옮김). 인사이트
+- https://www.yihangho.com/java-nested-classes-behind-the-scenes/
 
 ### 중첩 클래스
 
