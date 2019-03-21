@@ -25,7 +25,10 @@
   - 추상 골격 구현(skeletal implementation) 클래스를 함께 제공하면 인터페이스와 추상클래스의 장점을 모두 취할 수 있다.  
    골격구현을 확장하는 것으로 인터페이스 구현이 거의 끝난다.  
   예) AbstractCollection, AbstractList 등  
-  - 구조상 골격구현을 확장하지 못하는 경우, 인터페이스를 구현한 클래스에서 골격구현을 확장한 private 내부 클래스를 정의하여 사용할 수 있다.  
+  - 구조상 골격구현을 확장하지 못하는 경우, 인터페이스를 구현한 클래스에서 골격구현을 확장한 private 내부 클래스를 정의하여 사용할 수 있다.
+  
+  [참고] ArrayList 
+![ArrayList](ArrayList.png)
   
 ## 골격 구현 작성 방법  
 1. 다른 메서드들의 구현에 사용되는 기반 메서드들을 선정한다. 기반메서드는 골격 구현에서 추상 메서드가 된다.  
@@ -48,3 +51,6 @@
 
 > 출처  
 Effective java 3/E (조슈아 블로크)
+
+> 참고자료  
+[Java8 docs - List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)
