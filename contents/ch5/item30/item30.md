@@ -8,28 +8,35 @@
 
 - 로 타입을 이용해서 경고가 발생하는 경우
 ```Java
-        // unchecked 관련 warning이 발생
-        public static Set union(Set s1, Set s2) {
-            Set result = new HashSet(s1);
+    // unchecked 관련 warning이 발생
+    public static Set union(Set s1, Set s2) {
+        Set result = new HashSet(s1);
+        result.addAll(s2);
+        return result;
+    }
+```
+
+- 로 타입을 이용한 메서드에서 unchecked 경고를 없애려면 타입 안전하게 만들어야 한다. 메서드 선언에서의 로타입 컬렉션의 원소 타입을 타입 매개변수로 명시하고, 메서드 안에서도 이 타입 매개변수만 사용하게 수정하면 된다.
+```Java
+    public static <E> Set<E> union2(Set<E> s1, Set<E> s2) {
+            Set<E> result = new HashSet<>(s1);
             result.addAll(s2);
             return result;
         }
 ```
-
-- 로 타입을 이용한 메서드에서 unchecked 경고를 없애려면 타입 안전하게 만들어야 한다. 메서드 선언에서의 로타입 컬렉션의 원소 타입을 타입 매개변수로 명시하고, 메서드 안에서도 이 타입 매개변수만 사용하게 수정하면 된다.
-    - 타입 매개변수 목록은 메서드의 접근 제한자와 반환 타입 사이에 온다.
+- 타입 매개변수 목록은 메서드의 접근 제한자와 반환 타입 사이에 온다.
 
 ### 제네릭 메서드의 예 - 불변 객체를 여러 타입으로 활용할 수 있게 만들어야 할 때
 
 - 제네릭은 런타임에 타입 정보가 소거되므로 하나의 객체를 어떤 타입으로든 매개변수화 할 수 있다. 하지만 이렇게 하려면 요청한 타입 매개변수에 맞게 매번 그 객체의 타입을 바꿔주는 정적 팩터리를 만들어야 한다. 이 패턴을 제네릭 싱글턴 팩터리라고 한다.
     - ex) Collections.emptySet
 ```Java
-            // from java.util.Collections
-            
-            @SuppressWarnings("unchecked")
-            public static final <T> Set<T> emptySet() {
-                return (Set<T>) EMPTY_SET;
-            }
+    // from java.util.Collections
+    
+    @SuppressWarnings("unchecked")
+    public static final <T> Set<T> emptySet() {
+        return (Set<T>) EMPTY_SET;
+    }
 ```
 
 - 예제) 항등 함수 만들기
