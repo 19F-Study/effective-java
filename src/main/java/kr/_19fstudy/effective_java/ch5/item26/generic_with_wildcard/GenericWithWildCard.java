@@ -57,4 +57,14 @@ public class GenericWithWildCard {
 		}
 		return result;
 	}
+
+	static <T> int ex(Set<T> s1, Set<T> s2) {
+		int result = 0;
+		for (Object o1 : s1) {
+			if (s2.contains(o1)) {
+				result++;
+			}
+		}
+		return result;
+	}
 }
