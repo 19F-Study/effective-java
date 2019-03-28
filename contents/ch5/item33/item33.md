@@ -63,13 +63,23 @@ Favorites의 두번째 제약사항을 슈퍼 타입 토큰(super type token)으
 
 ```java
 // AnnotationElement.java
-// annotationType 인수는 애너테이션 타입을 뜻하는 한정적 타입 토큰이다.
 public final <A> A getAnnotation(Class<? extends Annotation> annotationType) {
     Objects.requireNonNull(annotationType);
     return type.getAnnotation(annotationType);
 }
+
+// p. 204 - annotationType 인수는 애너테이션 타입을 뜻하는 한정적 타입 토큰이다.
+// 토큰으로 명시한 타입의 애너테이션이 대상 요소에 달려있다면 그 애너테이션을 반환하고 없다면 null을 반환.
+// 애너테이션된 요소는 그 키가 애너테이션 타입인, 타입 안전 이종 컨테이너이다.
+public <T extends Annotation> T getAnnotation(Class<T> annotationType);
 ```
 
+* Class<?> 타입의 객체가 있고, 이를 (getAnnotation 처럼)한정적 타입 토큰을 받는 메서드에 넘기려면 ?  
+-> 객체를 Class<? extends Annotation>으로 형변환 : 이는 비검사이므로 컴파일 경고가 뜬다.  
+-> Class 클래스가 이런 형변환을 동적으로 안전하게 해주는 인스턴스 메서드를 제공 : asSubclass
+
+* asSubclass : 호출된 인스턴스 자신의 Class 객체를 인수가 명시한 클래스로 형변환.  
+형변환이 된다는 것은 이 클래스가 인수로 명시한 크래스의 하위 클래스라는 뜻이다. 
 
 
 > 참고자료  
