@@ -1,6 +1,6 @@
-package kr._19fstudy.effective_java.ch6;
+package kr._19fstudy.effective_java.ch6.item34;
 
-import static kr._19fstudy.effective_java.ch6.Inverse.inverse;
+import static kr._19fstudy.effective_java.ch6.item34.Inverse.inverse;
 
 public class Main {
 

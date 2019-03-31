@@ -1,6 +1,6 @@
-package kr._19fstudy.effective_java.ch6;
+package kr._19fstudy.effective_java.ch6.item34;
 
-import static kr._19fstudy.effective_java.ch6.PayrollDay.PayType.*;
+import static kr._19fstudy.effective_java.ch6.item34.PayrollDay.PayType.*;
 
 enum PayrollDay {
     MONDAY(WEEKDAY), TUESDAY(WEEKDAY), WEDNESDAY(WEEKDAY),
