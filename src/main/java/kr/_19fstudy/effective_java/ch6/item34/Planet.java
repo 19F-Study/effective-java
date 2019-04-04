@@ -1,4 +1,4 @@
-package kr._19fstudy.effective_java.ch6;
+package kr._19fstudy.effective_java.ch6.item34;
 
 // 코드 34-3 데이터와 메서드를 갖는 열거 타입 (211쪽)
 public enum Planet {

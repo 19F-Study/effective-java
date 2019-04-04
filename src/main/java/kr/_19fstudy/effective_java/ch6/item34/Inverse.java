@@ -1,4 +1,4 @@
-package kr._19fstudy.effective_java.ch6;
+package kr._19fstudy.effective_java.ch6.item34;
 
 public class Inverse {
     public static Operation inverse(Operation op) {
