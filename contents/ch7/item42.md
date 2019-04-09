@@ -13,6 +13,7 @@
   - 함수 타입을 표현할 때 사용하며, 이런 인터페이스의 인스턴스를 함수 객체(function object)라고 함.  
   - 특정함수나 동작을 나타내기 위해 사용됨.  
   - 함수 객체를 만드는 주요 수단은 익명 클래스이다.
+  - default method는 abstract가 아니므로 functional interface에 추가해도 상관 없다.
   
 ```java
 // 정렬을 위한 비교함수로 익명 클래스를 사용한 예
@@ -65,3 +66,5 @@ words.sort(comparingInt(String::length));
 -> 람다에서의 this 키워드는 바깥 인스턴스를 가리킨다.  
  익명클래스에서의 this는 인스턴스 자신을 가리킨다.
  
+ > 참고   
+[java 8 tutorial](https://winterbe.com/posts/2014/03/16/java-8-tutorial/)
