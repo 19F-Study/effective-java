@@ -92,7 +92,7 @@ public class NewLinkedHashMap<K,V> extends LinkedHashMap<K,V> {
 - 반드시 따라야 하는 규약이 있다.
 - 유용한 디폴트 메서드를 제공할 수 있다.
 
-**@FunctionalInterface Annotation을 사용하라**
+**@FunctionalInterface Annotation을 사용하라**  
 직접 만든 함수형 인터페이스에는 항상 @FunctionalInterface 애너테이션을 사용하라.
 - 해당 클래스의 코드나 설명 문서를 읽을 이에게 그 인터페이스가 람다용으로 설계된 것임을 알려준다.
 - 해당 인터페이스가 추상 메서드를 오직 하나만 가지고 있어야 컴파일되게 해준다. 
