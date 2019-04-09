@@ -65,7 +65,7 @@ public class NewLinkedHashMap<K,V> extends LinkedHashMap<K,V> {
 **기본 인터페이스 종류**
 - Operator Interface
 	- 반환값과 인수의 타입이 같은 함수를 뜻한다.
-	- 인수가 1개인 **UnaryOperator Interface**와 2개인 **BinaryOperator Interface**로 나뉜다.
+	- 인수가 1개인 UnaryOperator Interface 와, 2개인 BinaryOperator Interface 로 나뉜다.
 - Predicate Interface
   - 인수 하나를 받아 boolean을 반환하는 함수를 뜻한다.
 - Function Interface
