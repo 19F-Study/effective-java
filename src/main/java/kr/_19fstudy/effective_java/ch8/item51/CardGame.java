@@ -1,4 +1,4 @@
-package kr._19fstudy.effective_java.ch8;
+package kr._19fstudy.effective_java.ch8.item51;
 
 public class CardGame {
 
