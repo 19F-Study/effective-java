@@ -1,4 +1,4 @@
-package kr._19fstudy.effective_java.ch7.item50;
+package kr._19fstudy.effective_java.ch8.item50;
 
 import java.util.Date;
 
