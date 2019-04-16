@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class ToMap {
 	private static final Map<String, Operation> stringToEnum = Stream.of(Operation.values())
-		.collect(Collectors.toMap(Operation::toString, e -> e));
+		.collect(Collectors.toMap(Operation::toString, e -> e, (o, n) -> n));
 
 	public static void main(String[] args) {
 
