@@ -66,6 +66,10 @@ public class ObservableSet<E> extends ForwardingSet<E> {
 ```
 
 Case 1) ConcurrentModificationException
+* 아래 코드를 보면 0부터 23까지 출력한 후 관찰자 자신을 구독해지한 다음 조용히 종료할 것이다. 그런데 실제로 실행해보면 ConcurrentModificationException 이 발생한다.
+* 관찰자의 added 메서드 호출이 일어난 시점이 notifyElementAdded가 관찰자들의 리스트를 순회하는 도중이기 때문이다.
+* added 메서드는 ObservableSet의 removeObserver 메서드를 호출하고, 이 메서드는 다시 observers.remove 메서드를 호출한다. 리스트에서 원소를 제거하려 하는데, 마침 지금은 이 리스트를 순회중이므로, 허용되지 않은 동작이다.
+* notifyElementAdded() 메서드에서 수행하는 순회는 동기화 블록 안에 있으므로 동시 수정이 일어나지 않도록 보장하지만, 정작 자신이 콜백을 거쳐 되돌아와 수정을 하는 것까지 막지는 못한다.
 ```java
 @Test(expected = ConcurrentModificationException.class)
 public void testObservableSet2() {
@@ -88,12 +92,10 @@ private void update(ObservableSet set) {
     }
 }
 ```
-* 위 코드를 보면 0부터 23까지 출력한 후 관찰자 자신을 구독해지한 다음 조용히 종료할 것이다. 그런데 실제로 실행해보면 ConcurrentModificationException 이 발생한다.
-* 관찰자의 added 메서드 호출이 일어난 시점이 notifyElementAdded가 관찰자들의 리스트를 순회하는 도중이기 때문이다.
-* added 메서드는 ObservableSet의 removeObserver 메서드를 호출하고, 이 메서드는 다시 observers.remove 메서드를 호출한다. 리스트에서 원소를 제거하려 하는데, 마침 지금은 이 리스트를 순회중이므로, 허용되지 않은 동작이다.
-* notifyElementAdded() 메서드에서 수행하는 순회는 동기화 블록 안에 있으므로 동시 수정이 일어나지 않도록 보장하지만, 정작 자신이 콜백을 거쳐 되돌아와 수정을 하는 것까지 막지는 못한다.
 
 Case 2) Deadlock
+* 구독해지를 하는 관찰자를 작성하는데, removeObserver를 직접 호출하지 않고, 별도의 스레드로 호출한다.
+* 백그라운드 스레드가 set.removeObserver를 호출하면, 관찰자를 잠그려 시도하지만 락을 얻을 수 없다. 메인 스레드가 이미 락을 쥐고 있기 때문이다. 그와 동시에 메인 스레드는 백그라운드 스레드가 관찰자를 제거하기만을 기다리는 중이다. 이것은 교착상태이다.
 ```java
 @Test
 public void testObservableSet3() {
@@ -117,8 +119,6 @@ public void testObservableSet3() {
     update(set);
 }
 ```
-* 구독해지를 하는 관찰자를 작성하는데, removeObserver를 직접 호출하지 않고, 별도의 스레드로 호출한다.
-* 백그라운드 스레드가 set.removeObserver를 호출하면, 관찰자를 잠그려 시도하지만 락을 얻을 수 없다. 메인 스레드가 이미 락을 쥐고 있기 때문이다. 그와 동시에 메인 스레드는 백그라운드 스레드가 관찰자를 제거하기만을 기다리는 중이다. 이것은 교착상태이다.
 
 <br>
 
@@ -142,7 +142,7 @@ public void notifyElementAdded(E element) {
 
 <br>
 
-## 더 나은 방법은 자바 동시성 컬렉션 라이브러리의 CopyOnWriteArrayList 를 사용하는 것이다.
+## 더 나은 방법은 자바 동시성 컬렉션 라이브러리의 CopyOnWriteArrayList 를 사용하는 것
 * CopyOnWriteArrayList는 ArrayList를 구현한 클래스로, 내부를 변경하는 작업은 항상 깨끗한 복사본을 만들어 수행하도록 구현했다.
 * 내부의 배열은 절대 수정되지 않으니 순회할 때 락이 필요 없어서 매우 빠르다.
 * 다른 용도로 쓰인다면 느리겠지만, 수정할 일은 드물고 순회만 빈번히 일어나는 관찰자 리스트 용도로는 최적이다.
