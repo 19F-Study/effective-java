@@ -143,7 +143,7 @@ public void notifyElementAdded(E element) {
 <br>
 
 ## 더 나은 방법은 자바 동시성 컬렉션 라이브러리의 CopyOnWriteArrayList 를 사용하는 것
-* CopyOnWriteArrayList는 ArrayList를 구현한 클래스로, 내부를 변경하는 작업은 항상 깨끗한 복사본을 만들어 수행하도록 구현했다.
+* CopyOnWriteArrayList는 ArrayList를 구현한 클래스로, 내부를 변경하는 작업은 항상 복사본을 만들어 수행하도록 구현됐다.
 * 내부의 배열은 절대 수정되지 않으니 순회할 때 락이 필요 없어서 매우 빠르다.
 * 다른 용도로 쓰인다면 느리겠지만, 수정할 일은 드물고 순회만 빈번히 일어나는 관찰자 리스트 용도로는 최적이다.
 
