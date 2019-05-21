@@ -23,6 +23,8 @@ public class ReflectionExample {
 			System.out.println(e);
 		}
 
+        Integer.parseInt("123");
+
 		Set<String> s = null;
 		try {
 			s = cons.newInstance();
