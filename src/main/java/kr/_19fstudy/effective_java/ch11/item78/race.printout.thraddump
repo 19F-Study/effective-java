@@ -1,0 +1,128 @@
+71697:
+2019-05-20 21:49:42
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (11.0.2+9-LTS mixed mode):
+
+Threads class SMR info:
+_java_thread_list=0x00007fe8c2606e40, length=13, elements={
+0x00007fe8c4001000, 0x00007fe8c5812800, 0x00007fe8c2810000, 0x00007fe8c38a5800,
+0x00007fe8c38a6000, 0x00007fe8c2811000, 0x00007fe8c4012000, 0x00007fe8c4025000,
+0x00007fe8c4843000, 0x00007fe8c283a800, 0x00007fe8c4026000, 0x00007fe8c580f000,
+0x00007fe8c3000000
+}
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 cpu=0.42ms elapsed=10.72s tid=0x00007fe8c4001000 nid=0x4a03 waiting on condition  [0x00007000051f2000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.ref.Reference.waitForReferencePendingList(java.base@11.0.2/Native Method)
+	at java.lang.ref.Reference.processPendingReferences(java.base@11.0.2/Reference.java:241)
+	at java.lang.ref.Reference$ReferenceHandler.run(java.base@11.0.2/Reference.java:213)
+
+"Finalizer" #3 daemon prio=8 os_prio=31 cpu=0.53ms elapsed=10.72s tid=0x00007fe8c5812800 nid=0x3803 in Object.wait()  [0x00007000052f5000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(java.base@11.0.2/Native Method)
+	- waiting on <0x000000070e7016d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(java.base@11.0.2/ReferenceQueue.java:155)
+	- waiting to re-lock in wait() <0x000000070e7016d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(java.base@11.0.2/ReferenceQueue.java:176)
+	at java.lang.ref.Finalizer$FinalizerThread.run(java.base@11.0.2/Finalizer.java:170)
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 cpu=0.43ms elapsed=10.70s tid=0x00007fe8c2810000 nid=0x4003 runnable  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 cpu=356.55ms elapsed=10.70s tid=0x00007fe8c38a5800 nid=0x4503 waiting on condition  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+   No compile task
+
+"C1 CompilerThread0" #8 daemon prio=9 os_prio=31 cpu=83.48ms elapsed=10.69s tid=0x00007fe8c38a6000 nid=0x4403 waiting on condition  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+   No compile task
+
+"Sweeper thread" #9 daemon prio=9 os_prio=31 cpu=2.51ms elapsed=10.68s tid=0x00007fe8c2811000 nid=0x5703 runnable  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Common-Cleaner" #10 daemon prio=8 os_prio=31 cpu=0.28ms elapsed=10.60s tid=0x00007fe8c4012000 nid=0x5903 in Object.wait()  [0x0000700005804000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(java.base@11.0.2/Native Method)
+	- waiting on <0x000000070e7045d8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(java.base@11.0.2/ReferenceQueue.java:155)
+	- waiting to re-lock in wait() <0x000000070e7045d8> (a java.lang.ref.ReferenceQueue$Lock)
+	at jdk.internal.ref.CleanerImpl.run(java.base@11.0.2/CleanerImpl.java:148)
+	at java.lang.Thread.run(java.base@11.0.2/Thread.java:834)
+	at jdk.internal.misc.InnocuousThread.run(java.base@11.0.2/InnocuousThread.java:134)
+
+"Monitor Ctrl-Break" #11 daemon prio=5 os_prio=31 cpu=29.59ms elapsed=10.46s tid=0x00007fe8c4025000 nid=0xa703 runnable  [0x0000700005907000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(java.base@11.0.2/Native Method)
+	at java.net.SocketInputStream.socketRead(java.base@11.0.2/SocketInputStream.java:115)
+	at java.net.SocketInputStream.read(java.base@11.0.2/SocketInputStream.java:168)
+	at java.net.SocketInputStream.read(java.base@11.0.2/SocketInputStream.java:140)
+	at sun.nio.cs.StreamDecoder.readBytes(java.base@11.0.2/StreamDecoder.java:284)
+	at sun.nio.cs.StreamDecoder.implRead(java.base@11.0.2/StreamDecoder.java:326)
+	at sun.nio.cs.StreamDecoder.read(java.base@11.0.2/StreamDecoder.java:178)
+	- locked <0x000000070e705a50> (a java.io.InputStreamReader)
+	at java.io.InputStreamReader.read(java.base@11.0.2/InputStreamReader.java:185)
+	at java.io.BufferedReader.fill(java.base@11.0.2/BufferedReader.java:161)
+	at java.io.BufferedReader.readLine(java.base@11.0.2/BufferedReader.java:326)
+	- locked <0x000000070e705a50> (a java.io.InputStreamReader)
+	at java.io.BufferedReader.readLine(java.base@11.0.2/BufferedReader.java:392)
+	at com.intellij.rt.execution.application.AppMainV2$1.run(AppMainV2.java:64)
+
+"Service Thread" #12 daemon prio=9 os_prio=31 cpu=0.06ms elapsed=10.46s tid=0x00007fe8c4843000 nid=0xa503 runnable  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-0" #13 prio=5 os_prio=31 cpu=6679.46ms elapsed=9.36s tid=0x00007fc5f10d1000 nid=0xa003 runnable  [0x0000700002ffe000]
+   java.lang.Thread.State: RUNNABLE
+        at java.io.PrintStream.write(java.base@11.0.2/PrintStream.java:557)
+        - locked <0x000000070e701b10> (a java.io.PrintStream)
+        at sun.nio.cs.StreamEncoder.writeBytes(java.base@11.0.2/StreamEncoder.java:233)
+        at sun.nio.cs.StreamEncoder.implFlushBuffer(java.base@11.0.2/StreamEncoder.java:312)
+        at sun.nio.cs.StreamEncoder.flushBuffer(java.base@11.0.2/StreamEncoder.java:104)
+        - locked <0x000000070e701ac8> (a java.io.OutputStreamWriter)
+        at java.io.OutputStreamWriter.flushBuffer(java.base@11.0.2/OutputStreamWriter.java:184)
+        at java.io.PrintStream.write(java.base@11.0.2/PrintStream.java:606)
+        - eliminated <0x000000070e701b10> (a java.io.PrintStream)
+        at java.io.PrintStream.print(java.base@11.0.2/PrintStream.java:676)
+        at java.io.PrintStream.println(java.base@11.0.2/PrintStream.java:812)
+        - locked <0x000000070e701b10> (a java.io.PrintStream)
+        at kr._19fstudy.effective_java.ch11.item78.RaceConditionExample.lambda$main$0(RaceConditionExample.java:15)
+        at kr._19fstudy.effective_java.ch11.item78.RaceConditionExample$$Lambda$14/0x0000000800066840.run(Unknown Source)
+        at java.lang.Thread.run(java.base@11.0.2/Thread.java:834)
+
+"Thread-1" #14 prio=5 os_prio=31 cpu=6158.69ms elapsed=9.36s tid=0x00007fc5f10d2000 nid=0x6003 waiting for monitor entry  [0x0000700003101000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+        at java.io.PrintStream.println(java.base@11.0.2/PrintStream.java:811)
+        - waiting to lock <0x000000070e701b10> (a java.io.PrintStream)
+        at kr._19fstudy.effective_java.ch11.item78.RaceConditionExample.lambda$main$1(RaceConditionExample.java:21)
+        at kr._19fstudy.effective_java.ch11.item78.RaceConditionExample$$Lambda$15/0x0000000800066c40.run(Unknown Source)
+        at java.lang.Thread.run(java.base@11.0.2/Thread.java:834)
+
+"DestroyJavaVM" #15 prio=5 os_prio=31 cpu=222.57ms elapsed=10.45s tid=0x00007fe8c580f000 nid=0x2603 waiting on condition  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Attach Listener" #16 daemon prio=9 os_prio=31 cpu=0.90ms elapsed=0.20s tid=0x00007fe8c3000000 nid=0x9903 waiting on condition  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"VM Thread" os_prio=31 cpu=1.87ms elapsed=10.73s tid=0x00007fe8c2812000 nid=0x3503 runnable  
+
+"GC Thread#0" os_prio=31 cpu=1.32ms elapsed=10.75s tid=0x00007fe8c480d800 nid=0x2f03 runnable  
+
+"GC Thread#1" os_prio=31 cpu=1.07ms elapsed=8.91s tid=0x00007fe8c3937000 nid=0x9e03 runnable  
+
+"GC Thread#2" os_prio=31 cpu=1.74ms elapsed=8.91s tid=0x00007fe8c5815000 nid=0x6003 runnable  
+
+"GC Thread#3" os_prio=31 cpu=1.60ms elapsed=8.91s tid=0x00007fe8c3988000 nid=0x9c03 runnable  
+
+"GC Thread#4" os_prio=31 cpu=1.41ms elapsed=8.91s tid=0x00007fe8c3988800 nid=0x6103 runnable  
+
+"GC Thread#5" os_prio=31 cpu=1.73ms elapsed=8.91s tid=0x00007fe8c3989800 nid=0x6303 runnable  
+
+"G1 Main Marker" os_prio=31 cpu=0.55ms elapsed=10.75s tid=0x00007fe8c4842800 nid=0x5103 runnable  
+
+"G1 Conc#0" os_prio=31 cpu=0.04ms elapsed=10.75s tid=0x00007fe8c3801000 nid=0x3203 runnable  
+
+"G1 Refine#0" os_prio=31 cpu=0.55ms elapsed=10.75s tid=0x00007fe8c38a2000 nid=0x4d03 runnable  
+
+"G1 Young RemSet Sampling" os_prio=31 cpu=2.08ms elapsed=10.75s tid=0x00007fe8c5801800 nid=0x3403 runnable  
+"VM Periodic Task Thread" os_prio=31 cpu=2.98ms elapsed=10.46s tid=0x00007fe8c48ed800 nid=0x5d03 waiting on condition  
+
+JNI global refs: 19, weak refs: 0
+
